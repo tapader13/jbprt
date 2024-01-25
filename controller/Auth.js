@@ -53,12 +53,12 @@ exports.loginUser = async (req, res) => {
     .json(req.user.token);
 };
 exports.fetchLogout = async (req, res) => {
-  try {
-    const location = await Job.find({});
-    res.status(200).json(location);
-  } catch (error) {
-    res.status(401).json(error);
-  }
+  res
+    .cookie('jwt', null, {
+      expires: new Date(Date.now()),
+      httpOnly: true,
+    })
+    .sendStatus(200);
 };
 exports.checkuser = async (req, res) => {
   if (req.user) {
