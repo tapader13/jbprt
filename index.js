@@ -15,7 +15,7 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const path = require('path');
 const server = express();
 const cors = require('cors');
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 const sec = 'Sec';
 const { User } = require('./model/User');
 
